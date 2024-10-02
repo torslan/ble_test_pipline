@@ -13,6 +13,32 @@ pipeline {
             }
         }
 
+        stage('Build Docker Images') {
+            parallel {
+                stage('Build A2DP Image') {
+                    steps {
+                        script {
+                            docker.build('a2dp-test-image', './a2dp_test')
+                        }
+                    }
+                }
+                stage('Build HFP Image') {
+                    steps {
+                        script {
+                            docker.build('hfp-test-image', './hfp_test')
+                        }
+                    }
+                }
+                stage('Build Connectivity/Disconnect Image') {
+                    steps {
+                        script {
+                            docker.build('conn-disc-test-image', './connect_disconnect_test')
+                        }
+                    }
+                }
+            }
+        }
+
         stage('Run Bluetooth Tests') {
             parallel {
                 stage('A2DP Test') {
@@ -79,4 +105,3 @@ pipeline {
         }
     }
 }
-
