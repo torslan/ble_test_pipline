@@ -3,6 +3,7 @@ pipeline {
 
     environment {
         TEST_MODE = 'mock'  // Change to 'real' to run real tests
+        DOCKER_BUILDKIT = '1'  // Add this to ensure BuildKit is used
     }
 
     stages {
