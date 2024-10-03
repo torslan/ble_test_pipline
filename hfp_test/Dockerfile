@@ -13,8 +13,11 @@ RUN apt-get update && apt-get install -y \
     build-essential \
     && rm -rf /var/lib/apt/lists/*
 
-# Install Python dependencies
-RUN pip install pybluez
+# Upgrade pip and setuptools
+RUN pip install --upgrade pip setuptools
+
+# Install pybluez from GitHub
+RUN pip install git+https://github.com/pybluez/pybluez.git
 
 # Copy the HFP test scripts (both mock and real) into the container
 COPY run_hfp_tests.py run_hfp_tests_mock.py /usr/src/hfp_test/
