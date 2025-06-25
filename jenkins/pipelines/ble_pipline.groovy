@@ -40,6 +40,32 @@ pipeline {
             }
         }
 
+        stage('Run Unit Tests') {
+            parallel {
+                stage('A2DP Unit') {
+                    steps {
+                        docker.image('a2dp-test-image').inside {
+                            sh 'pytest -q'
+                        }
+                    }
+                }
+                stage('HFP Unit') {
+                    steps {
+                        docker.image('hfp-test-image').inside {
+                            sh 'pytest -q'
+                        }
+                    }
+                }
+                stage('ConnDisc Unit') {
+                    steps {
+                        docker.image('conn-disc-test-image').inside {
+                            sh 'pytest -q'
+                        }
+                    }
+                }
+            }
+        }
+
         stage('Run Bluetooth Tests') {
             parallel {
                 stage('A2DP Test') {
