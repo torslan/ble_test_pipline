@@ -47,11 +47,13 @@ pipeline {
                         script {
                             if (env.TEST_MODE == 'mock') {
                                 docker.image('a2dp-test-image').inside {
+
                                     sh 'python3 ./a2dp_test/run_a2dp_tests_mock.py'
                                     echo 'Mock A2DP test complete.'
                                 }
                             } else {
                                 docker.image('a2dp-test-image').inside {
+
                                     sh 'python3 ./a2dp_test/run_a2dp_tests.py'
                                     echo 'Real A2DP test complete.'
                                 }
@@ -65,11 +67,13 @@ pipeline {
                         script {
                             if (env.TEST_MODE == 'mock') {
                                 docker.image('hfp-test-image').inside {
+
                                     sh 'python3 ./hfp_test/run_hfp_tests_mock.py'
                                     echo 'Mock HFP test complete.'
                                 }
                             } else {
                                 docker.image('hfp-test-image').inside {
+
                                     sh 'python3 ./hfp_test/run_hfp_tests.py'
                                     echo 'Real HFP test complete.'
                                 }
@@ -83,11 +87,13 @@ pipeline {
                         script {
                             if (env.TEST_MODE == 'mock') {
                                 docker.image('conn-disc-test-image').inside {
+
                                     sh 'python3 ./connect_disconnect_test/run_conn_disc_tests_mock.py'
                                     echo 'Mock Connectivity/Disconnect test complete.'
                                 }
                             } else {
                                 docker.image('conn-disc-test-image').inside {
+
                                     sh 'python3 ./connect_disconnect_test/run_conn_disc_tests.py'
                                     echo 'Real Connectivity/Disconnect test complete.'
                                 }
