@@ -1,8 +1,12 @@
 import logging
 import time
+import os
 
 # Set up logging
-logging.basicConfig(filename='/usr/src/connect_disconnect_test/results/conn_disc_test_results.txt', level=logging.INFO)
+results_dir = os.path.join(os.path.dirname(__file__), 'results')
+os.makedirs(results_dir, exist_ok=True)
+log_file = os.path.join(results_dir, 'conn_disc_test_results.txt')
+logging.basicConfig(filename=log_file, level=logging.INFO)
 
 def mock_test_connect_disconnect():
     logging.info("Starting mock Connectivity/Disconnect test...")

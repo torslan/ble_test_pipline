@@ -1,8 +1,12 @@
 import bluetooth
 import logging
+import os
 
 # Set up logging
-logging.basicConfig(filename='/usr/src/hfp_test/results/hfp_test_results.txt', level=logging.INFO)
+results_dir = os.path.join(os.path.dirname(__file__), 'results')
+os.makedirs(results_dir, exist_ok=True)
+log_file = os.path.join(results_dir, 'hfp_test_results.txt')
+logging.basicConfig(filename=log_file, level=logging.INFO)
 
 def test_hfp_connection():
     # Example of testing HFP connection (pseudocode, adapt to your test case)
