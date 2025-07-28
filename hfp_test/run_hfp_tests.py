@@ -5,7 +5,7 @@ import logging
 logging.basicConfig(filename='/usr/src/hfp_test/results/hfp_test_results.txt', level=logging.INFO)
 
 def test_hfp_connection():
-    # Example of testing HFP connection (pseudo code, adapt to your test case)
+    # Example of testing HFP connection (pseudocode, adapt to your test case)
     logging.info("Starting HFP connection test...")
 
     try:
